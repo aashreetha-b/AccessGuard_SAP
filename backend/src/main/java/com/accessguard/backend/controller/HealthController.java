@@ -20,8 +20,10 @@ public class HealthController {
 
         response.put("status", "UP");
         response.put("service", "AccessGuard Backend");
-        response.put("version", "1.0.0");
+        response.put("version", "2.0.0");
+        response.put("render", "NEW BUILD");
         response.put("timestamp", LocalDateTime.now());
+        
 
         return response;
     }

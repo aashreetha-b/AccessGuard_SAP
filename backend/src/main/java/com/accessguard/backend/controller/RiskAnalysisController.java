@@ -11,7 +11,11 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:5175")
+@CrossOrigin(origins = {
+	    "http://localhost:5175",
+	    "https://accessguard-sap-1.onrender.com"
+	})
+
 public class RiskAnalysisController {
 
     @Autowired

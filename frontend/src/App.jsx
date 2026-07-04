@@ -50,7 +50,7 @@ function App() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:8080/api/v1/analyze",
+        "https://accessguard-sap.onrender.com/api/v1/analyze",
         {
           userId: userId,
           roles: roles

@@ -101,12 +101,15 @@ public class RiskAnalysisService {
     }
     
     public AnalysisResponse analyze(AnalysisRequest request) {
-    	
-    	logger.info("Received analysis request for employee {}",
-    	        request.getUserId());
 
-    	List<ConflictRule> conflicts = findConflicts(request.getRoles());
-    	int riskScore = calculateRiskScore(conflicts);
+        logger.info("Roles received from frontend: {}", request.getRoles());
+
+        List<ConflictRule> conflicts = findConflicts(request.getRoles());
+
+        logger.info("Conflicts found: {}", conflicts.size());
+
+        // 🔥 FIX: compute riskScore properly
+        int riskScore = calculateRiskScore(conflicts);
 
         String riskLevel = determineRiskLevel(riskScore);
 
@@ -115,14 +118,14 @@ public class RiskAnalysisService {
         List<String> conflictDescriptions = conflicts.stream()
                 .map(ConflictRule::getDescription)
                 .collect(Collectors.toList());
-        
+
         logger.info(
-        	    "Risk Analysis Complete -> Employee: {}, Score: {}, Level: {}, Conflicts: {}",
-        	    request.getUserId(),
-        	    riskScore,
-        	    riskLevel,
-        	    conflicts.size()
-        	);
+                "Risk Analysis Complete -> Employee: {}, Score: {}, Level: {}, Conflicts: {}",
+                request.getUserId(),
+                riskScore,
+                riskLevel,
+                conflicts.size()
+        );
 
         return new AnalysisResponse(
                 "AG-000001",
@@ -132,7 +135,8 @@ public class RiskAnalysisService {
                 conflictDescriptions.size(),
                 conflictDescriptions,
                 recommendation,
-                java.time.LocalDateTime.now().toString());
+                java.time.LocalDateTime.now().toString()
+        );
     }
 
 }

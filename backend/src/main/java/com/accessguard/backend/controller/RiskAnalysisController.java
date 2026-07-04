@@ -8,10 +8,10 @@ import com.accessguard.backend.dto.AnalysisResponse;
 import com.accessguard.backend.service.RiskAnalysisService;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:5175")
 public class RiskAnalysisController {
 
     @Autowired

@@ -63,26 +63,26 @@ public class SampleData {
         List<ConflictRule> rules = new ArrayList<>();
 
         rules.add(new ConflictRule(
-                "CREATE_VENDOR",
-                "APPROVE_PAYMENT",
+                "Create Vendor",
+                "Approve Payment",
                 RiskLevel.HIGH,
                 "Create Vendor + Approve Payment"));
 
         rules.add(new ConflictRule(
-                "CREATE_USER",
-                "ASSIGN_ADMIN",
+                "Create User",
+                "Assign Admin",
                 RiskLevel.HIGH,
                 "Create User + Assign Admin"));
 
         rules.add(new ConflictRule(
-                "SUBMIT_EXPENSE",
-                "APPROVE_EXPENSE",
+                "Submit Expense",
+                "Approve Expense",
                 RiskLevel.MEDIUM,
                 "Submit Expense + Approve Expense"));
 
         rules.add(new ConflictRule(
-                "CREATE_PO",
-                "APPROVE_PO",
+                "Create Purchase Order",
+                "Approve Purchase Order",
                 RiskLevel.HIGH,
                 "Create Purchase Order + Approve Purchase Order"));
 

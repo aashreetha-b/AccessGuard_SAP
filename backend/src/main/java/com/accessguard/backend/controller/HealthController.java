@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HealthController {
 
+    
     @GetMapping("/api/v1/health")
     public Map<String, Object> health() {
+
+        System.out.println("HEALTH ENDPOINT HIT");
 
         Map<String, Object> response = new HashMap<>();
 

@@ -2,9 +2,15 @@ package com.accessguard.backend.dto;
 
 import java.util.List;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 public class AnalysisRequest {
 
+    @NotBlank(message = "User ID is required")
     private String userId;
+
+    @NotEmpty(message = "At least one role must be provided")
     private List<String> roles;
 
     public AnalysisRequest() {

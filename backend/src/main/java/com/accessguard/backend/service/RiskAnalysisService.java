@@ -109,10 +109,14 @@ public class RiskAnalysisService {
                 .collect(Collectors.toList());
 
         return new AnalysisResponse(
+                "AG-000001",
+                request.getUserId(),
                 riskScore,
                 riskLevel,
+                conflictDescriptions.size(),
                 conflictDescriptions,
-                recommendation);
+                recommendation,
+                java.time.LocalDateTime.now().toString());
     }
 
 }

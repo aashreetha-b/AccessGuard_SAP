@@ -7,6 +7,9 @@ import com.accessguard.backend.dto.AnalysisRequest;
 import com.accessguard.backend.dto.AnalysisResponse;
 import com.accessguard.backend.service.RiskAnalysisService;
 
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestBody;
+
 @RestController
 @RequestMapping("/api/v1")
 public class RiskAnalysisController {
@@ -15,7 +18,7 @@ public class RiskAnalysisController {
     private RiskAnalysisService riskAnalysisService;
 
     @PostMapping("/analyze")
-    public AnalysisResponse analyze(@RequestBody AnalysisRequest request) {
+    public AnalysisResponse analyze(@Valid @RequestBody AnalysisRequest request) {
 
         return riskAnalysisService.analyze(request);
 

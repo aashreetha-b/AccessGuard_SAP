@@ -21,6 +21,10 @@ import {
 const rolesList = [
   "Create Vendor",
   "Approve Payment",
+  "Create User",
+  "Assign Admin",
+  "Submit Expense",
+  "Approve Expense",
   "Create Purchase Order",
   "Approve Purchase Order"
 ];

@@ -13,8 +13,13 @@ import org.springframework.stereotype.Service;
 import com.accessguard.backend.model.ConflictRule;
 import com.accessguard.backend.util.SampleData;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
 public class RiskAnalysisService {
+	private static final Logger logger =
+	        LoggerFactory.getLogger(RiskAnalysisService.class);
 
     public List<ConflictRule> findConflicts(List<String> userRoles) {
 
@@ -96,6 +101,9 @@ public class RiskAnalysisService {
     }
     
     public AnalysisResponse analyze(AnalysisRequest request) {
+    	
+    	logger.info("Received analysis request for employee {}",
+    	        request.getUserId());
 
     	List<ConflictRule> conflicts = findConflicts(request.getRoles());
     	int riskScore = calculateRiskScore(conflicts);
@@ -107,6 +115,14 @@ public class RiskAnalysisService {
         List<String> conflictDescriptions = conflicts.stream()
                 .map(ConflictRule::getDescription)
                 .collect(Collectors.toList());
+        
+        logger.info(
+        	    "Risk Analysis Complete -> Employee: {}, Score: {}, Level: {}, Conflicts: {}",
+        	    request.getUserId(),
+        	    riskScore,
+        	    riskLevel,
+        	    conflicts.size()
+        	);
 
         return new AnalysisResponse(
                 "AG-000001",

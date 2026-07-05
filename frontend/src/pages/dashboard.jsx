@@ -61,7 +61,7 @@ export default function Dashboard() {
       setLoading(true);
 
       const response = await axios.post(
-    "https://accessguard-sap-1.onrender.com/api/v1/analyze",
+    "https://accessguard-sap-backend.onrender.com/api/v1/analyze",
     {
         userId,
         roles
